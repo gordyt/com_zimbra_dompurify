@@ -1,4 +1,4 @@
-<zimlet name="com_zimbra_dompurify" version="1.0.3" description="DOMPurify Example">
+<zimlet name="com_zimbra_dompurify" version="1.0.4" description="DOMPurify Example">
     <include>purify.min.js</include>
     <include>com_zimbra_dompurify.js</include>
     <handlerObject>com_zimbra_dompurify_handler</handlerObject>
