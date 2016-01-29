@@ -4,13 +4,11 @@
 
 function com_zimbra_dompurify_handler () {
     console.log("dompurify: constructor");
-    $.ajaxSetup({
-        dataFilter: function (data, type) {
-            console.log("dompurify.dataFilter: type='" + type + "', data.length='" +
-                data.length + "'");
-            return data;
-        }
-    });
+    var saveSend = XMLHttpRequest.prototype.send;
+    XMLHttpRequest.prototype.send = function () {
+        console.log("dompurify.send: arguments.length='" + arguments.length + "'");
+        saveSend.apply(this, arguments);
+    };
 }
 
 com_zimbra_dompurify_handler.prototype = new ZmZimletBase();
