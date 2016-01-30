@@ -135,7 +135,8 @@ function com_zimbra_dompurify_handler () {
                 try {
                     var oldResponse = JSON.parse(this.response);
                     if (oldResponse.Body && (oldResponse.Body.GetMsgResponse || oldResponse.Body.GetConvResponse)) {
-                        this.response = sanitizeTextHtml(oldResponse);
+                        this.response = JSON.stringify(sanitizeTextHtml(oldResponse));
+                        this.responseText = this.response;
                     }
                 }
                 catch (err) {
