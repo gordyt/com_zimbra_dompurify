@@ -133,7 +133,8 @@ function com_zimbra_dompurify_handler () {
             if (this.responseType === "" || this.responseType === "text" ) {
                 try {
                     var oldResponse = JSON.parse(this.response);
-                    if (oldResponse.Body && (oldResponse.Body.GetMsgResponse || oldResponse.Body.GetConvResponse)) {
+                    if (oldResponse.Body && (oldResponse.Body.GetMsgResponse || oldResponse.Body.GetConvResponse ||
+                        oldResponse.Body.SearchConvResponse)) {
                         this.response = JSON.stringify(sanitizeTextHtml(oldResponse));
                         this.responseText = this.response;
                     }
