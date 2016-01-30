@@ -4,9 +4,8 @@
 
 
 function com_zimbra_dompurify_handler () {
-    var com_zimbra_dompurity_XMLHttpRequest = XMLHttpRequest;
-    XMLHttpRequest = function (params) {
-        console.log("XMLHttpRequest: param='" + params + "'");
+    var com_zimbra_dompurity_XMLHttpRequest = window.XMLHttpRequest;
+    window.XMLHttpRequest = function (params) {
         var request = new com_zimbra_dompurity_XMLHttpRequest(params);
         var published = {};
         var response = undefined;
