@@ -75,6 +75,18 @@ function com_zimbra_dompurify_handler () {
         }
         saveRun.call(this, args);
     };
+
+    var saveGetAttachmentLink = ZmMailMsgView.getAttachmentLinkHtml;
+    ZmMailMsgView.getAttachmentLinkHtml = function (params) {
+        var html = saveGetAttachmentLink.call(this, params);
+        if (params.blankTarget) {
+            $(document).on('click', "#" + params.id, {}, function (evt) {
+                alert("clicked on " + params.id);
+                return false;
+            });
+        }
+        return html;
+    };
 }
 
 com_zimbra_dompurify_handler.prototype = new ZmZimletBase();
